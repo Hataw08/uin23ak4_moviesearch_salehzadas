@@ -1,77 +1,30 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
-import MovieDescription from "../components/MovieDescription/MovieDescription";
-import SearchForm from "../components/SearchBox/SearchBox";
-import SearchResult from "../components/SearchResult/SearchResult";
-import "./SearchPage.scss";
+import React from "react";
+import MovieCard from "../MovieCard/MovieCard";
+import "./SearchResult.scss";
 
-const API_KEY = "722738d3";
-const BASE_URL = "http://www.omdbapi.com/";
+const SearchResult = (props) => {
+  const { searchData, getMovieData } = props;
 
-const SearchPage = () => {
-  const [searchData, setSearchData] = useState("");
-  const [movieDescription, setMovieDescription] = useState("");
-  const [isShowPopup, setIsShow] = useState(false);
+  if (!searchData || searchData.Response === "False") {
+    return (
+      <section id="search_result">
+        <h1>Search Result</h1>
+        <p>{searchData.Error}</p>
+      </section>
+    );
+  }
 
-  useEffect(() => {
-    callApiInitialMovie();
-  }, []);
-
-  const callApiInitialMovie = () => {
-    axios
-      .get(`${BASE_URL}?apikey=${API_KEY}&s=James+Bond&type=movie`)
-      .then((response) => {
-        setSearchData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getSearchKeyWord = (data) => {
-    axios
-      .get(`${BASE_URL}?apikey=${API_KEY}&s=${data}&type=movie`)
-      .then((response) => {
-        setSearchData(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const getMovieData = (data) => {
-    if (data.imdbID === movieDescription.imdbID) {
-      setIsShow(false);
-      setMovieDescription("");
-      return;
-    }
-
-    axios
-      .get(`${BASE_URL}?apikey=${API_KEY}&i=${data.imdbID}&type=movie`)
-      .then((response) => {
-        setMovieDescription(response.data);
-        setIsShow(true);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
-  const closeModal = () => {
-    setIsShow(false);
-  };
+  const movieList = searchData.Search.map((movie) => (
+    <MovieCard key={movie.imdbID} movie={movie} getMovieData={getMovieData} />
+  ));
 
   return (
-    <main id="search">
-      <SearchForm getSearchKeyWord={getSearchKeyWord} />
-      <SearchResult searchData={searchData} getMovieData={getMovieData} />
-      <MovieDescription
-        isShowPopup={isShowPopup}
-        movieDescription={movieDescription}
-        closeModal={closeModal}
-      />
-    </main>
+    <section id="search_result">
+      <h1>Search Result</h1>
+      <div className="result_list_container">{movieList}</div>
+    </section>
   );
 };
 
-export default SearchPage;
+export default SearchResult;
+
