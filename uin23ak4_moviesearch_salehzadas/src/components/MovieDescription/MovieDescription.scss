@@ -1,0 +1,60 @@
+$description-width: 800px;
+
+.movie_description {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  &__content {
+    flex: 1 0 50%;
+    padding-top: 12px;
+    margin-right: 16px;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  &__image {
+    flex: 1 0 50%;
+    margin-left: 16px;
+  }
+}
+
+.close_button {
+  background-color: transparent; 
+  color: white; 
+  font-size: 30px; 
+  font-weight: bold;
+  border: none;
+  &:hover {
+    background-color: red; 
+    color: white; 
+  }
+}
+
+hr {
+  border: none; 
+  height: 5px; 
+  background-color: red; 
+}
+
+
+#movie_description {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: $description-width;
+  background-color: black;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 52px 44px 20px;
+  z-index: 200;
+
+  .movie_description {
+    position: initial;
+  }
+}

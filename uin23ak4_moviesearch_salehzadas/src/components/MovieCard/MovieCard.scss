@@ -1,0 +1,48 @@
+.result_item_poster {
+    width: 100%;
+    display: grid;
+    gap: 6px;
+    cursor: pointer;
+    transition: all 0.3s linear;
+    grid-template-rows: 300px 40px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+  
+    .image_info {
+      height: 100%;
+      min-width: 200px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+      }
+    }
+  
+    .btn_info {
+      background-color: black;
+      border: none;
+      color:white;
+      font-weight: 600;
+      padding: 6px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: block;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transform: scale(1);
+      transition: all 0.2s linear;
+  
+      &:hover {
+        background-color: red;
+        color: #000;
+        
+      }
+    }
+  }
+  
