@@ -1,15 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import NavBar from "./components/NavBar/NavBar";
-import SearchPage from "./pages/SearchPage";
+import SearchPage from "./Pages/SearchPage";
+
 
 const App = () => {
   return (
     <div className="app">
-      <NavBar />
       <SearchPage />
     </div>
   );
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
+
+export default App;
+
