@@ -1,5 +1,7 @@
 .result_item_poster {
+  width: 100%;
   display: grid;
+  gap: 1rem;
   cursor: pointer;
   grid-template-rows: 300px;
   justify-items: center;
