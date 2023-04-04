@@ -1,13 +1,12 @@
 .result_item_poster {
-  width: 100%;
   display: grid;
-  gap: 6px;
   cursor: pointer;
-  transition: all 0.3s linear;
-  grid-template-rows: 300px 40px;
+  grid-template-rows: 300px;
   justify-items: center;
   align-items: center;
   justify-content: center;
+}
+
 
   .image_info {
     height: 100%;
@@ -44,4 +43,4 @@
       
     }
   }
-}
+
